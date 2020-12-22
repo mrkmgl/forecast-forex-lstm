@@ -1,2 +1,9 @@
-# forecast-forex-lstm
-Simple Model to Forecast Forex
+# Simple Model to Forecast Forex
+
+The model forecasts the next hour looking back at the previous 5 hours of trading through a combination of technical analysis and pattern identification.
+
+I have tested topologies from one hidden layer up to 6 hidden layers with different widths from 10 to 50 neurons in the first hidden layer. Each next hidden layer was two times smaller than the former one, so one possible topology has 20, 10, 5, 2 neurons in the first, second, third, and fourth hidden layer, respectively. The biggest network had over eleven thousands of connections. I was not able to run more effective systems due to memory capacity. 
+
+Therefore, the simple sequential model's architecture consists of one LSTM input layer with 20 nodes and 6,960 parameters involved. The LSTM network consists of 4 hidden layers with 20, 20, 10, and 4 nodes, respectively. Therefore, the number of parameters involved decrease as we move to the output layer (next hour). Indeed, from the first hidden layer to the last, the parameters involved are 3,280, 1,240, 240, and 20, respectively. In total, the trainable parameters are 11,745. 
+
+Dropout is a moderately new theory in neural networks and should limit the over-fitting model on the training set. I tested 0.0 and 0.5 levels of dropout, which suggests that throughout training, 0% and 50% of neurons are randomly turned off. For neural networks with a relatively small number of connections and four hidden layers the dropout 0.5 has no meaningful effect on unfiltered validation and test set, but, mixed with filtering dropout 0.5 ended up more dangerous than neural network without dropout (dropout 0.0). Dropout of 0.2 has been chosen for this study after a few testing steps. To summarize, the Figure 6.4 illustrates the architecture and Table 6.3 speci es the shapes and parameters. The fitting is architectured with 200 epochs, 64 batch size, and 0.1 validation split.
