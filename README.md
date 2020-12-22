@@ -1,4 +1,4 @@
-# Simple Model to Forecast Forex
+# Simple LSTM Model to Forecast Forex
 
 The model forecasts the next hour looking back at the previous 5 hours of trading through a combination of technical analysis and pattern identification.
 
